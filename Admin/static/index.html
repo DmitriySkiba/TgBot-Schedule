@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Kaushan+Script&family=Montserrat:wght@500&family=Orbitron&family=Saira:wght@300;400&display=swap" rel="stylesheet">
+        <!-- <link rel="stylesheet" href="/admin/style.css"> -->
+
+        <style>
+            body {
+                margin: 0;
+                font-family: 'Montserrat', sans-serif;
+
+                font-size: 15px;
+                line-height: 1.6;
+
+                background-color: rgb(59, 116, 71);
+            }
+
+            .container {
+                display: block;
+                border-radius: 30px;
+                box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+                width: 100%;
+                height: auto;
+                min-height: 500px;
+                max-width: 1230px;
+                padding: 0 15px 50px;
+                margin: 30px auto;
+                background-color: rgb(236, 255, 235);
+            }
+
+            .header {
+                width: 100%;
+                padding-top: 30px;
+                height: 80px;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1000;
+                position: relative;
+            }
+
+            .title {
+                color: rgb(2, 66, 18);
+                font-size: 40px;
+                font-weight: 600;
+                text-align: center;
+                line-height: 1;
+                position: relative;
+            }
+
+            .title:after {
+                content: "";
+                display: block;
+                width: 100%;
+                height: 2px;
+                margin: 30px auto;
+
+                background-color: rgb(2, 66, 18);
+            }
+
+            form {
+                text-align: left;
+                margin-bottom: 30px;
+            }
+
+            form:after {
+                content: "";
+                display: block;
+                width: 100%;
+                height: 2px;
+                margin: 30px auto;
+
+                background-color: rgb(2, 66, 18);
+            }
+
+            .form-title {
+                color: rgb(2, 66, 18);
+                margin: 20px 30px 0;
+                font-size: 20px;
+                font-weight: 600;
+                text-align: left;
+                line-height: 1;
+                position: relative;
+            }
+
+            .input-container {
+                display: block;
+                position: relative;
+                margin: 20px 20px;
+                text-align: left;
+            }
+
+            .input-container input {
+                width: 100%;
+                font-family: 'Montserrat', sans-serif;
+                box-sizing: border-box;
+                font-size: 20px;
+                padding: 0 20px;
+                min-height: 50px;
+                border: 1px rgb(2, 66, 18) solid;
+                border-radius: 30px;
+            }
+
+            .input-file {
+                margin: 30px 20px 20px;
+                position: relative;
+                display: inline-block;
+            }
+            .input-file-text {
+                padding: 0 20px;
+                line-height: 40px;
+                text-align: left;
+                height: 40px;
+                display: block;
+                float: left;
+                box-sizing: border-box;
+                width: 200px;
+                border-radius: 30px 0 0 30px;
+                border: 1px solid rgb(2, 66, 18);
+                background-color: #fff;
+            }
+            .input-file-btn {
+            position: relative;
+                display: inline-block;
+                cursor: pointer;
+                outline: none;
+                text-decoration: none;
+                font-size: 14px;
+                vertical-align: middle;
+                color: rgb(255 255 255);
+                text-align: center;
+                border-radius: 0 30px 30px 0;
+                background-color: rgb(2, 66, 18);
+                line-height: 22px;
+                height: 40px;
+                padding: 10px 20px;
+                box-sizing: border-box;
+                border: none;
+                margin: 0;
+                transition: background-color 0.2s;
+            }
+            .input-file input[type=file] {
+                position: absolute;
+                z-index: -1;
+                opacity: 0;
+                display: block;
+                width: 0;
+                height: 0;
+            }
+            .input-file:hover .input-file-btn {
+                background-color: rgb(0, 104, 26);
+            }
+
+            .input-container label {
+                position: absolute;
+                padding: 0 20px;
+                font-size: 20px;
+                line-height: 50px;
+                color: #999;
+                pointer-events: none;
+                transition: 0.2s;
+            }
+
+            .button {
+                margin: 20px;
+                width: auto;
+                padding: 0 30px;
+                height: 50px;
+                border-radius: 30px;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 20px;
+                color: #fff;
+                border: none;
+                background-color: rgb(2, 66, 18);
+            }
+
+            .button:hover {
+                background-color: rgb(0, 104, 26);
+                cursor: pointer;
+            }
+
+
+            table {
+                margin-top: 30px;
+                table-layout: fixed;
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            thead th:nth-child(1) {
+                width: 20%;
+            }
+            
+            thead th:nth-child(2) {
+                width: 35%;
+            }
+            
+            thead th:nth-child(3) {
+                width: 25%;
+            }
+            
+            thead th:nth-child(4) {
+                width: 20%;
+            }
+
+            th,
+            td {
+            padding: 20px;
+            text-align: center;
+            }
+
+            tbody tr:nth-child(odd) {
+                background-color: rgb(201, 255, 217);
+            }
+        </style>
+
+        <title>Панель администрирования</title>
+    </head>
+    <body>
+
+        <section>
+            <div class="container">
+                <div class="header">
+                    <div class="title">Панель администратора</div>
+                </div>
+
+                <div class="form-title">Изменение данных студента</div>
+                <form action="http://127.0.0.1:8082/update-student" method="POST">
+                    <div class="form-student">
+                        <div class="input-container">
+                            <label for="git_id">GitHub Id (Нужен для обновления студента в базе)</label>
+                            <input type="text" id="git_id" name="git_id" required>
+                        </div>
+                        
+                        <div class="input-container">
+                            <label for="username">ФИО</label>
+                            <input type="text" id="username" name="username" required>
+                        </div>
+                        
+                        <div class="input-container">
+                            <label for="group">Группа</label>
+                            <input type="text" id="group" name="group" required>
+                        </div>
+                        
+                        <div class="input-container">
+                            <label for="role">Роль</label>
+                            <input type="text" id="role" name="role" required>
+                        </div>
+                    </div>
+                    
+                    <input class="button" type="submit" value="Сохранить изменения">
+                </form>
+
+                <div class="form-title">Удаление студента</div>
+                <form action="http://127.0.0.1:8082/delete-student" method="POST">
+                    <div class="form-student">
+                        <div class="input-container">
+                            <label for="del_id">GitHub Id</label>
+                            <input type="text" id="del_id" name="del_id" required>
+                        </div>
+                    </div>
+                    
+                    <input class="button" type="submit" value="Удалить пользователя">
+                </form>
+
+                <div class="form-title">Изменение расписания</div>
+                <form action="http://127.0.0.1:8082/upload-schedule" method="POST" enctype="multipart/form-data">
+                    <div class="form-student">
+                        <label class="input-file">
+                            <span class="input-file-text" type="text"></span>
+                            <input type="file" name="file">        
+                            <span class="input-file-btn">Выберите файл</span>
+                      </label>
+                    </div>
+                    
+                    <input class="button" type="submit" value="Отправить">
+                </form>
+
+                <div class="form-title">Данные студентов</div>
+                <table id="table-students">
+                    <thead>
+                       <tr>
+                          <th>GitHub Id</th>
+                          <th>ФИО</th>
+                          <th>Группа</th>
+                          <th>Роль</th>
+                       </tr>
+                    </thead>
+                    <tbody></tbody>
+                 </table>
+
+            </div>
+        </section>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+        <script>
+            $('.input-file input[type=file]').on('change', function(){
+                let file = this.files[0];
+                $(this).closest('.input-file').find('.input-file-text').html(file.name);
+            });
+        </script>
+
+        <script>
+            $.post('http://localhost:8082/get-students', {}, 
+            function(data) {
+
+                var tbody = $("#table-students tbody");
+                tbody.empty();
+
+                $.each(data, function(index, item) {
+                    console.log(item)
+                    var row = "<tr><td>" + item.GithubID + "</td><td>" + item.About.Name + "</td><td>" + item.About.Group + "</td><td>" + item.Role + "</td></tr>";
+                    tbody.append(row);
+                });
+
+                console.log(data);
+            
+            });
+
+
+            document.addEventListener("DOMContentLoaded", function() {
+            var inputs = document.querySelectorAll("input");
+
+            inputs.forEach(function(input) {
+                input.addEventListener("input", function() {
+                    var label = document.querySelector("label[for='" + input.id + "']");
+
+                    if (input.type != 'file') {
+                        if (input.value.length > 0) {
+                            label.style.display = "none";
+                        } else {
+                            label.style.display = "inline";
+                        }
+                    }
+                    
+                });
+            });
+            });
+        </script>
+
+    </body>
+</html>
